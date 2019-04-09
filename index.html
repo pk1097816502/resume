@@ -35,24 +35,76 @@
 			top:50%;
 			left:50%;
 			position: absolute;
+			-webkit-transform: rotateX(30deg);
+			-moz-transform: rotateX(30deg);
+			-ms-transform: rotateX(30deg);
+			-o-transform: rotateX(30deg);
+			transform: rotateX(30deg);
+			-webkit-transform-style: preserve-3d;
+			-moz-transform-style: preserve-3d;
+			-ms-transform-style: preserve-3d;
+			-o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+		}
+		.page{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			-webkit-transform-origin: 0 50%;
+			-moz-transform-origin: 0 50%;
+			-ms-transform-origin: 0 50%;
+			-o-transform-origin: 0 50%;
+			transform-origin: 0 50%;
+		}
+		.beginPage{
+			background: #123217;
+		}
+		.endPage{
+			background: #178588;
 		}
 	</style>
 	
 	<body>
-		<div class="book">
-			
+		<div class="book" id="book">
+			<div class="endPage page">
+				
+			</div>
+			<div class="beginPage page">
+				
+			</div>
 		</div>
 	</body>
 </html>
 
 <script>
 	var bookDiv;	//book模块
+	var pageList;	//书页模块
+	var prefixes = ['Webkit', 'Moz', 'ms', 'O', ''];	//浏览器标识列表
+	var pageSize;	//书页大小
 	
 	window.onload = function(){
 		//初始化DOM
-		bookDiv = document.getElementsByClassName("book")[0];
+		bookDiv = document.getElementById("book");
+		pageList = document.getElementsByClassName("page");
 		
 		bookSize(getBookSize());
+		
+		for(let page of pageList){
+			page.onmousedown = function(event){
+				let mouseBeginX = event.pageX;		//记录鼠标开始时的x坐标
+				let mouseBeginY = event.pageX;		//记录鼠标开始时的y坐标
+				document.onmousemove = function(event){
+					let angle = clamp((document.body.clientWidth / 2 - event.pageX + pageSize) / pageSize * -90, -180, 0);
+					for(let prefixe of prefixes){
+						page.style[prefixe + 'Transform'] = 'rotateY(' + angle + 'deg)';
+					}
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+		}
+		
 	}
 	
 	window.onresize = function(){
@@ -61,6 +113,7 @@
 	
 	//调整书的大小
 	function bookSize(size){
+		pageSize=size;
 		bookDiv.style.width=size+"px";
 		bookDiv.style.height=size+"px";
 		bookDiv.style.marginTop=size / -2 +"px";
@@ -70,4 +123,8 @@
 	function getBookSize(){
 		return (document.body.clientWidth-20)/2>document.body.clientHeight-20?document.body.clientHeight-20:(document.body.clientWidth-20)/2;
 	}
+	
+	function clamp(val, min, max) {
+	    return Math.max(min, Math.min(val, max));
+	};
 </script>
