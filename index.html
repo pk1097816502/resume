@@ -55,25 +55,131 @@
 			-ms-transform-origin: 0 50%;
 			-o-transform-origin: 0 50%;
 			transform-origin: 0 50%;
+			transition: transform 0.1s;
+			-webkit-transition: transform 0.1s;
+			-moz-transition: transform 0.1s;
+			-ms-transition: transform 0.1s;
+			-o-transition: transform 0.1s;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			-webkit-transform-style: preserve-3d;
+			-moz-transform-style: preserve-3d;
+			-ms-transform-style: preserve-3d;
+			-o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			box-sizing:border-box;
+			border: 1px #000000 solid;
+			border-left: none;
 		}
 		.beginPage{
 			background: #123217;
 		}
 		.endPage{
 			background: #178588;
+			width: 100%;
+			height: 100%;
+		}
+		.onePage{
+			background: #FFFAFA;
+		}
+		.twoPage{
+			background: #FFF68F;
+		}
+		.threePage{
+			background: #FFEFD5;
+		}
+		.fourPage{
+			background: #FFE4E1;
+		}
+		.leftPage{
+			width:100%;
+			height:100%;
+			word-wrap:break-word;
+			position: absolute;
+			background: #FFDEAD;
+			transform:translateZ(1px);
+			z-index: 2;
+			-webkit-transform-style: preserve-3d;
+			-moz-transform-style: preserve-3d;
+			-ms-transform-style: preserve-3d;
+			-o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+		}
+		.rightPage{
+			width:100%;
+			height:100%;
+			word-wrap:break-word;
+			position: absolute;
+			background: #FFC1C1;
+			z-index: 1;
+			-webkit-transform: rotateY(180deg);
+			-moz-transform: rotateY(180deg);
+			-ms-transform: rotateY(180deg);
+			-o-transform: rotateY(180deg);
+			transform: rotateY(180deg);
+			-webkit-transform-style: preserve-3d;
+			-moz-transform-style: preserve-3d;
+			-ms-transform-style: preserve-3d;
+			-o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
 		}
 	</style>
 	
 	<body>
 		<div class="book" id="book">
-			<div class="endPage page">
-				
+			<div class="beginPage page" turning="1">
+				<div class="leftPage">
+					111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+				</div>
+				<div class="rightPage">
+					222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+				</div>
 			</div>
-			<div class="beginPage page">
+			<div class="onePage page" turning="1">
+				<div class="leftPage">
+					333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+				</div>
+				<div class="rightPage">
+					444444444444444444444444444444444444444444444444444444444444444444444444444444444444
+				</div>
+			</div>
+			<div class="twoPage page" turning="1">
+				<div class="leftPage">
+					555555555555555555555555555555555555555555555555555555555555555555555555555555555555
+				</div>
+				<div class="rightPage">
+					666666666666666666666666666666666666666666666666666666666666666666666666666666666666
+				</div>
+			</div>
+			<div class="threePage page" turning="1">
+				<div class="leftPage">
+					777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+				</div>
+				<div class="rightPage">
+					88888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+				</div>
+			</div>
+			<div class="fourPage page" turning="1">
+				<div class="leftPage">
+					99999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+				</div>
+				<div class="rightPage">
+					00000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+				</div>
+			</div>
+			<div class="endPage">
 				
 			</div>
 		</div>
 	</body>
+	
+	<audio preload="preload" id="audioDiv">
+		<source src="audio/zhuanyan.mp3" type="audio/mpeg">
+		转眼-五月天
+	</audio>
 </html>
 
 <script>
@@ -81,32 +187,67 @@
 	var pageList;	//书页模块
 	var prefixes = ['Webkit', 'Moz', 'ms', 'O', ''];	//浏览器标识列表
 	var pageSize;	//书页大小
+	var pageIndex = 0;
+	var audioDiv;	//音频控件
 	
 	window.onload = function(){
 		//初始化DOM
-		bookDiv = document.getElementById("book");
-		pageList = document.getElementsByClassName("page");
+		bookDiv = document.getElementById("book");				//book模块
+		pageList = document.getElementsByClassName("page");		//书页模块
+		audioDiv = document.getElementById("audioDiv");			//音频控件
 		
+		//初始化书的大小
 		bookSize(getBookSize());
 		
-		for(let page of pageList){
-			page.onmousedown = function(event){
+		//循环每一页
+		for(let i=0 ; i < pageList.length ; i++){
+			//给每一页设置权重
+			for(let prefixe of prefixes){
+				pageList[i].style['z-index'] = pageList.length - i;
+			}
+			
+			//鼠标按下翻书功能
+			pageList[i].onmousedown = function(event){
+				console.log(event);
+				this.style['z-index'] = pageList.length+1;
 				let mouseBeginX = event.pageX;		//记录鼠标开始时的x坐标
 				let mouseBeginY = event.pageX;		//记录鼠标开始时的y坐标
 				document.onmousemove = function(event){
-					let angle = clamp((document.body.clientWidth / 2 - event.pageX + pageSize) / pageSize * -90, -180, 0);
+					let angle = clamp((document.body.clientWidth / 2 - event.pageX + pageSize) / pageSize * -90, (-180+(pageList.length - i)), 0);
 					for(let prefixe of prefixes){
-						page.style[prefixe + 'Transform'] = 'rotateY(' + angle + 'deg)';
+						pageList[i].style[prefixe + 'Transform'] = 'rotateY(' + angle + 'deg)';
 					}
 				}
-				document.onmouseup = function(){
+				document.onmouseup = function(event){
+					let angle = clamp((document.body.clientWidth / 2 - event.pageX + pageSize) / pageSize * -90, -180, 0);
+					let tangle = 0;
+					let z_depth = 0;
+					if(angle>-90){
+						z_depth = document.querySelectorAll("div[turning='1']").length;
+						pageList[i].style['z-index'] = z_depth + 1;
+						pageList[i].setAttribute("turning",1);
+						tangle = 0;
+					}else{
+						z_depth = document.querySelectorAll("div[turning='2']").length;
+						pageList[i].style['z-index'] = z_depth + 1;
+						pageList[i].setAttribute("turning",2);
+						tangle = -180;
+					}
+					for(let prefixe of prefixes){
+						pageList[i].style[prefixe + 'Transform'] = 'rotateY(' + tangle + 'deg)';
+					}
 					document.onmousemove = null;
 				}
 			}
 		}
 		
+		audioDiv.oncanplay = function(){
+			console.log(this);
+			this.play();
+		}
 	}
 	
+	//调整浏览器大小时更改书的大小
 	window.onresize = function(){
 		bookSize(getBookSize());
 	}
