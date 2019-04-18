@@ -22,16 +22,16 @@
 		}
 		
 		body{
-			background-color: #444444;
-			background-image: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#999999));
-			background-image: -webkit-linear-gradient(top, #444444, #999999);
-			background-image: -moz-linear-gradient(top, #444444, #999999);
-			background-image: -ms-linear-gradient(top, #444444, #999999);
-			background-image: -o-linear-gradient(top, #444444, #999999);
-			background-image: linear-gradient(to bottom, #444444, #999999);
+			background-color: #977d64;
+			background-image: -webkit-gradient(linear, left top, left bottom, from(#977d64), to(#999999));
+			background-image: -webkit-linear-gradient(top, #977d64, #999999);
+			background-image: -moz-linear-gradient(top, #977d64, #999999);
+			background-image: -ms-linear-gradient(top, #977d64, #999999);
+			background-image: -o-linear-gradient(top, #977d64, #999999);
+			background-image: linear-gradient(to bottom, #977d64, #999999);
 		}
 		.book{
-			background: #FFFFFF;
+			background: #aa8961;
 			top:50%;
 			left:50%;
 			position: absolute;
@@ -72,34 +72,18 @@
 			transform-style: preserve-3d;
 			box-sizing:border-box;
 			border: 1px #000000 solid;
-			border-left: none;
-		}
-		.beginPage{
-			background: #123217;
 		}
 		.endPage{
 			background: #178588;
 			width: 100%;
 			height: 100%;
 		}
-		.onePage{
-			background: #FFFAFA;
-		}
-		.twoPage{
-			background: #FFF68F;
-		}
-		.threePage{
-			background: #FFEFD5;
-		}
-		.fourPage{
-			background: #FFE4E1;
-		}
 		.leftPage{
 			width:100%;
 			height:100%;
 			word-wrap:break-word;
 			position: absolute;
-			background: #FFDEAD;
+			background: #caa77c;
 			transform:translateZ(1px);
 			z-index: 2;
 			-webkit-transform-style: preserve-3d;
@@ -107,13 +91,19 @@
 			-ms-transform-style: preserve-3d;
 			-o-transform-style: preserve-3d;
 			transform-style: preserve-3d;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			display: flex;
 		}
 		.rightPage{
 			width:100%;
 			height:100%;
 			word-wrap:break-word;
 			position: absolute;
-			background: #FFC1C1;
+			background: #caa77c;
 			z-index: 1;
 			-webkit-transform: rotateY(180deg);
 			-moz-transform: rotateY(180deg);
@@ -125,25 +115,128 @@
 			-ms-transform-style: preserve-3d;
 			-o-transform-style: preserve-3d;
 			transform-style: preserve-3d;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			display: flex;
+		}
+		
+		@keyframes audioPlay{
+			from{
+				transform:translateZ(3px) rotateZ(0deg);
+			}
+			50%{
+				transform:translateZ(3px) rotateZ(180deg);
+			}
+			to{
+				transform:translateZ(3px) rotateZ(360deg);
+			}
+		}
+		
+		#autioTool{
+			background-image: url(img/play.png);
+			width:7%;
+			height:7%;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			background-size: 100%;
+			position: absolute;
+			transform:translateZ(3px);
+			top:93%;
+			left:93%;
+			animation:audioPlay 10s linear; 
+			animation-iteration-count:infinite;
+			animation-play-state:paused;
+		}
+		
+		.beginPage .leftPage{
+			text-align: center;
+			display: flex;
+		}
+		.beginPage .leftPage img{
+			width: 30%;
+			margin: auto;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		
+		.beginPage .rightPage{
+			text-align: center;
+			line-height: 30px;
+			font-size: 18px;
+		}
+		
+		.leftPage div{
+			width: 100%;
+			margin: auto;
+		}
+		
+		.rightPage div{
+			width: 100%;
+			margin: auto;
+		}
+		
+		.beginPage .rightPage img{
+			width: 25%;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			margin-bottom: 5%;
+		}
+		.onePage .leftPage{
+			text-indent:2em;
+		}
+		
+		.onePage .leftPage p{
+			margin: 15px 10%;
+			line-height: 25px;
+			font-size: 18px;
 		}
 	</style>
 	
 	<body>
 		<div class="book" id="book">
 			<div class="beginPage page" turning="1">
-				<div class="leftPage">
-					111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+				<div class="leftPage" style="background: #412122;">
+					<img src="img/zizhuan.png" draggable="false"/>
 				</div>
 				<div class="rightPage">
-					222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+					<div>
+						<img src="img/zp.jpg" draggable="false"/><br/>
+						孙浩田<br/>
+						前端工程师
+					</div>
 				</div>
 			</div>
 			<div class="onePage page" turning="1">
 				<div class="leftPage">
-					333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+					<div>
+						<p>
+						您好，我叫孙浩田，位于成都。我与2012年对计算机编程产生兴趣，并报了三年的长期培训班认真学习。学习过程中了解了基础c语言、c#、sql server、oracle，着重学习HTML、CSS、js、JavaEE以及Servlet。
+						</p>
+						<p>
+						2015年在一家小型互联网公司担任软件开发工程师一职，主要使用PHP（第一次接触PHP，自学并用于工作之中）、以及前端技术进行微信公众号以及微信商城的二次开发。
+						</p>
+						<p>
+						2017年在一家美容整形医院担任网站运维，维护网站正常运行并进行活动的更新。<br/>
+						</p>
+						<p>
+						从学习到现在走了很多弯路，也陷入过迷茫，现在已经找到未来的前进方向，希望在前端工程师的道路上越走越远、越走越深，跟进最新技术知识以及深入，同时也更加努力的弥补回之前损失和耽误的时间。
+						</p>
+					</div>
 				</div>
 				<div class="rightPage">
-					444444444444444444444444444444444444444444444444444444444444444444444444444444444444
+					
 				</div>
 			</div>
 			<div class="twoPage page" turning="1">
@@ -173,13 +266,15 @@
 			<div class="endPage">
 				
 			</div>
+			<div id="autioTool">
+				&nbsp;
+			</div>
 		</div>
+		<audio preload="preload" id="audioDiv" loop="loop">
+			<source src="audio/zhuanyan.mp3" type="audio/mpeg">
+			转眼-五月天
+		</audio>
 	</body>
-	
-	<audio preload="preload" id="audioDiv">
-		<source src="audio/zhuanyan.mp3" type="audio/mpeg">
-		转眼-五月天
-	</audio>
 </html>
 
 <script>
@@ -189,12 +284,14 @@
 	var pageSize;	//书页大小
 	var pageIndex = 0;
 	var audioDiv;	//音频控件
+	var autioTool;	//音频操作控件
 	
 	window.onload = function(){
 		//初始化DOM
 		bookDiv = document.getElementById("book");				//book模块
 		pageList = document.getElementsByClassName("page");		//书页模块
 		audioDiv = document.getElementById("audioDiv");			//音频控件
+		autioTool = document.getElementById("autioTool");		//音频操作控件
 		
 		//初始化书的大小
 		bookSize(getBookSize());
@@ -208,16 +305,18 @@
 			
 			//鼠标按下翻书功能
 			pageList[i].onmousedown = function(event){
-				console.log(event);
 				this.style['z-index'] = pageList.length+1;
+				this.setAttribute("turning",3);
 				let mouseBeginX = event.pageX;		//记录鼠标开始时的x坐标
 				let mouseBeginY = event.pageX;		//记录鼠标开始时的y坐标
+				
 				document.onmousemove = function(event){
 					let angle = clamp((document.body.clientWidth / 2 - event.pageX + pageSize) / pageSize * -90, (-180+(pageList.length - i)), 0);
 					for(let prefixe of prefixes){
 						pageList[i].style[prefixe + 'Transform'] = 'rotateY(' + angle + 'deg)';
 					}
 				}
+				
 				document.onmouseup = function(event){
 					let angle = clamp((document.body.clientWidth / 2 - event.pageX + pageSize) / pageSize * -90, -180, 0);
 					let tangle = 0;
@@ -242,8 +341,29 @@
 		}
 		
 		audioDiv.oncanplay = function(){
-			console.log(this);
 			this.play();
+			autioTool.style['background-image']="url(img/stop.png)";
+			autioTool.style['animation-play-state']="running";
+			return false;
+		}
+		
+		audioDiv.onplay = function(){
+			this.play();
+			autioTool.style['background-image']="url(img/stop.png)";
+			return false;
+		}
+		
+		autioTool.onclick = function(){
+			if(audioDiv.paused){
+				audioDiv.play();
+				this.style['background-image']="url(img/stop.png)";
+				this.style['animation-play-state']="running";
+			}else{
+				audioDiv.pause();
+				this.style['background-image']="url(img/play.png)";
+				this.style['animation-play-state']="paused";
+			}
+			return false;
 		}
 	}
 	
@@ -258,6 +378,8 @@
 		bookDiv.style.width=size+"px";
 		bookDiv.style.height=size+"px";
 		bookDiv.style.marginTop=size / -2 +"px";
+// 		autioTool.style.width = size / 10 + "px";
+// 		autioTool.style.height = size / 10 + "px";
 	}
 	
 	//获取书的大小
