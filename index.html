@@ -407,7 +407,6 @@
 		//初始化DOM
 		bookDiv = document.getElementById("book");				//book模块
 		pageList = document.getElementsByClassName("page");		//书页模块
-		audioDiv = document.getElementById("audioDiv");			//音频控件
 		autioTool = document.getElementById("autioTool");		//音频操作控件
 		
 		//初始化书的大小
@@ -471,6 +470,24 @@
 // 			autioTool.style['animation-play-state']="running";
 // 			return false;
 // 		}
+		
+		audioDiv = document.createElement("audio");
+		audioDiv.setAttribute("preload","preload");
+		audioDiv.setAttribute("id","audioDiv");
+		audioDiv.setAttribute("loop","loop");
+		
+		let source = document.createElement("source");
+		source.setAttribute("src","audio/zhuanyan.mp3");
+		source.setAttribute("type","audio/mpeg");
+		
+		let mp3Name = document.createTextNode("转眼-五月天");
+		
+		audioDiv.appendChild(source);
+		audioDiv.appendChild(mp3Name);
+		
+		document.body.appendChild(audioDiv);
+		//document.body.appendChild();
+		console.log(audioDiv);
 		
 		autioTool.onclick = function(){
 			if(audioDiv.paused){
