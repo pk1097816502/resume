@@ -2,7 +2,9 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title>Web前端工程师简历</title>
+		<meta name="description" content="孙浩田的web前端个人简历，自传。">
+		<meta name="keywords" content="web前端，web前端个人简历，前端开发简历网站，孙浩田的简历，前端工程师简历,web前端开发, web前端工程师">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	</head>
 	<style>
@@ -74,9 +76,15 @@
 			border: 1px #000000 solid;
 		}
 		.endPage{
-			background: #178588;
+			background: #caa77c;
 			width: 100%;
 			height: 100%;
+			position: absolute;
+			-webkit-transform-style: preserve-3d;
+			-moz-transform-style: preserve-3d;
+			-ms-transform-style: preserve-3d;
+			-o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
 		}
 		.leftPage{
 			width:100%;
@@ -204,6 +212,65 @@
 			line-height: 25px;
 			font-size: 18px;
 		}
+		.onePage .rightPage table{
+			margin: 0 auto;
+			width: 90%;
+		}
+		.onePage .rightPage td{
+			vertical-align: middle;
+			height: 25px;
+			text-align: left;
+		}
+		.onePage .rightPage div table tr td:first-child{
+			text-align: right;
+			width: 20%;
+		}
+		.onePage .rightPage .tableTitle{
+			height: 50px;
+			font-size: 24px;
+			letter-spacing:10px;
+			text-align: center !important;
+		}
+		.onePage .rightPage table tr td div{
+			height: 20px;
+			margin: 0;
+		}
+		.onePage .rightPage table tr td .level1{
+			background: #00FFFF;
+			width: 24%;
+		}
+		.onePage .rightPage table tr td .level2{
+			background: #00E5EE;
+			width: 48%;
+		}
+		.onePage .rightPage table tr td .level3{
+			background: #009ACD;
+			width: 72%;
+		}
+		.onePage .rightPage table tr td .level4{
+			background: #0000EE;
+			width: 96%;
+		}
+		
+		.twoPage .leftPage div{
+			height: 100%;
+		}
+		.twoPage .leftPage div .project{
+			width: calc((100% - 60px) / 3);
+			border: 1px #000000 solid;
+			box-sizing:border-box;
+			height: calc((100% - 80px) / 4);
+			margin: 10px;
+			float: left;
+			text-align: center;
+			vertical-align: middle;
+			display: flex;
+			text-decoration:none;
+		}
+		.twoPage .leftPage div .project span{
+			color: #000000;
+			margin: auto;
+		}
 	</style>
 	
 	<body>
@@ -238,48 +305,84 @@
 					</div>
 				</div>
 				<div class="rightPage">
-					
+					<div>
+						<table>
+							<tr>
+								<td colspan="2" class="tableTitle">前端</td>
+							</tr>
+							<tr>
+								<td>HTML5：</td>
+								<td><div class="level3"></div></td>
+							</tr>
+							<tr>
+								<td>CSS3：</td>
+								<td><div class="level3"></div></td>
+							</tr>
+							<tr>
+								<td>JavaScript：</td>
+								<td><div class="level3"></div></td>
+							</tr>
+							<tr>
+								<td>Vue：</td>
+								<td><div class="level2"></div></td>
+							</tr>
+							<tr>
+								<td>Ajax：</td>
+								<td><div class="level2"></div></td>
+							</tr>
+							<tr>
+								<td>JQuery：</td>
+								<td><div class="level2"></div></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="tableTitle">后端</td>
+							</tr>
+							<tr>
+								<td>Java：</td>
+								<td><div class="level2"></div></td>
+							</tr>
+							<tr>
+								<td>PHP：</td>
+								<td><div class="level2"></div></td>
+							</tr>
+							<tr>
+								<td>thinkPHP：</td>
+								<td><div class="level2"></div></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="tableTitle">工具</td>
+							</tr>
+							<tr>
+								<td>Eclipse：</td>
+								<td><div class="level2"></div></td>
+							</tr>
+							<tr>
+								<td>HbuilderX：</td>
+								<td><div class="level2"></div></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
-			<div class="twoPage page" turning="1">
+			<div class="twoPage endPage" turning="1">
 				<div class="leftPage">
 					<div>
-						555555555555555555555555555555555555555555555555555555555555555555555555555555555555
+						<a class="project" href="">
+							<span>我的简历（本站）</span>
+						</a>
+						<a class="project" href="https://pk1097816502.github.io/Smartisan/">
+							<span>Vue模仿锤子商城（纯前端）</span>
+						</a>
 					</div>
 				</div>
 				<div class="rightPage">
 					<div>
-						666666666666666666666666666666666666666666666666666666666666666666666666666666666666
 					</div>
 				</div>
 			</div>
-			<div class="threePage page" turning="1">
-				<div class="leftPage">
-					<div>
-						777777777777777777777777777777777777777777777777777777777777777777777777777777777777
-					</div>
-				</div>
-				<div class="rightPage">
-					<div>
-						88888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-					</div>
-				</div>
-			</div>
-			<div class="fourPage page" turning="1">
-				<div class="leftPage">
-					<div>
-						99999999999999999999999999999999999999999999999999999999999999999999999999999999999999
-					</div>
-				</div>
-				<div class="rightPage">
-					<div>
-						00000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-					</div>
-				</div>
-			</div>
-			<div class="endPage">
+<!-- 			<div class="endPage">
 				
-			</div>
+			</div> -->
 			<div id="autioTool">
 				&nbsp;
 			</div>
@@ -350,22 +453,24 @@
 						pageList[i].style[prefixe + 'Transform'] = 'rotateY(' + tangle + 'deg)';
 					}
 					document.onmousemove = null;
+					document.onmouseup = null;
 				}
 			}
 		}
 		
-		audioDiv.oncanplay = function(){
-			this.play();
-			autioTool.style['background-image']="url(img/stop.png)";
-			autioTool.style['animation-play-state']="running";
-			return false;
-		}
-		
-		audioDiv.onplay = function(){
-			this.play();
-			autioTool.style['background-image']="url(img/stop.png)";
-			return false;
-		}
+// 		audioDiv.oncanplay = function(){
+// 			this.play();
+// 			autioTool.style['background-image']="url(img/stop.png)";
+// 			autioTool.style['animation-play-state']="running";
+// 			return false;
+// 		}
+// 		
+// 		audioDiv.onplay = function(){
+// 			this.play();
+// 			autioTool.style['background-image']="url(img/stop.png)";
+// 			autioTool.style['animation-play-state']="running";
+// 			return false;
+// 		}
 		
 		autioTool.onclick = function(){
 			if(audioDiv.paused){
